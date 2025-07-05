@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+
+.text-shine {
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    #1e293b 0%,
+    #065f46 20%,
+    #7f1d1d 40%,
+    #1e40af 60%,
+    #7f1d1d 90%,
+    #1e293b 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Removed animation and text-shadow */
+}
+
+
+
+
+.gradient-animate {
+  background: linear-gradient(120deg, black, #1e293b, black, #1e293b, black);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease-in-out 1 forwards;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -53,22 +53,24 @@ project_dual_image_upscaler/
 │   │   ├── models/
 │   │   │   ├── dual_input_esrgan_generator.pth
 │   │   │   └── dual_input_esrgan_discriminator.pth
+│   ├── app.py
 │   └── requirements.txt
 │
 ├── frontend/
-│   ├── public/                    # Static files (logo, favicon, etc.)
+│   ├── public/
 │   ├── src/
-│   │   ├── App.jsx                # Main app component
-│   │   ├── UploadForm.jsx         # Upload form for input images
-│   │   └── ResultDisplay.jsx      # Output result preview
-│   ├── package.json               # Frontend dependencies
-│   └── README.md
+│   │   ├── App.jsx
+│   │   ├── pages
+│   │   │   ├── MainPage.tsx
+│   │   │   └── HomePage.tsx
+│   │   ├── Components
+│   │   │   └── Navbar.tsx
+│   ├── package.json
 │
 ├── data/
 │   ├── train_hr/                 # High-resolution training images
 │   └── train_lr/                 # Generated low-res training pairs
 │
-├── outputs/                     # Model output images during training
 ├── README.md                    # Project overview and usage
 └── .gitignore
 ```
@@ -77,7 +79,7 @@ project_dual_image_upscaler/
 
 ## 📆 Setup Instructions
 
-### Backend
+### Model training
 
 ```bash
 cd backend
@@ -90,11 +92,8 @@ pip install -r requirements.txt
 
 Use the following utility:
 
-```python
-from utils import download_data
-
-# Call this to download DIV2K and set up folder structure
-download_data()
+```bash
+python model/data_setup.py
 ```
 
 #### Train the Model
@@ -113,21 +112,28 @@ Follow the prompts to provide two input images and get the upscaled output.
 
 ---
 
-### Frontend (Optional Web Interface)
+### Backend
+For starting server to use model with web page efficiently.
+```bash
+uvicorn app:app
+```
 
+---
+### Frontend
+In a different terminal tab.
 ```bash
 cd frontend
-npm install
+npm i
 npm run dev
 ```
 
-Then open `http://localhost:3000` in your browser.
+Then open `http://localhost:5173` in your browser.
 
 ---
 
 ## 🏆 Team Members
 
-* Shivendra *(Model)*
+* Shivendra Devadhe *(Machine Learning)*
 * Shrikant Adhav *(Frontend Dev)*
 * Jeevika Agrawal *(Backend Dev)*
 * Sanika Desai *(Research & Documentation)*
@@ -138,7 +144,7 @@ Then open `http://localhost:3000` in your browser.
 
 * Python, PyTorch, TorchVision
 * OpenCV, NumPy, Matplotlib
-* FastAPI (optional for API)
+* FastAPI 
 * React + Vite (Frontend)
 
 ---
@@ -147,20 +153,6 @@ Then open `http://localhost:3000` in your browser.
 
 * Quantitative Metrics: PSNR, SSIM (blind evaluation compatible)
 * Visual inspection through side-by-side comparisons
-
----
-
-## 🚀 Future Improvements
-
-* Integrate FastAPI backend for real-time upscaling
-* Add support for time-series image alignment (pre-registration)
-* Quantitative results on remote sensing datasets (e.g., ISRO’s BHUVAN)
-
----
-
-## 🌐 License
-
-MIT License (if applicable)
 
 ---
 

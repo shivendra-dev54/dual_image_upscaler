@@ -44,3 +44,5 @@ def download_data():
     os.remove(zip_filename)
     print("Dataset is ready in the 'data/' directory.")
 
+if "__name__" == "main":
+    download_data()
